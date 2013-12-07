@@ -21,9 +21,8 @@ class Outliner(object):
                 self._outline(v, path + ['.' + k])
             return
         if isinstance(data, list):
-            pp = path + ['[]']
             for v in data:
-                self._outline(v, pp)
+                self._outline(v, path + ['[]'])
             self.values_for_path[p]['(Array of {0} elements)'.format(len(data))] = True
             return
         # scalar assumed
