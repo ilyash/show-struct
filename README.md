@@ -4,9 +4,13 @@ show-struct
 Shows possible jq paths in a JSON file
 
 
-Sample usage:
+Sample usage (when in path):
 
     show_struct.py BLAH_CloudTrail_us-east-1_BLAH_sViXVfCImmbyVBO6.json
+
+Sample usage (when not in path):
+
+    ./show_struct.py BLAH_CloudTrail_us-east-1_BLAH_sViXVfCImmbyVBO6.json
 
 Sample output:
 
