@@ -9,7 +9,7 @@ class Outliner(object):
 
     def __init__(self):
         self.paths = {}
-        self.values_for_path = collections.defaultdict(lambda: {})
+        self.values_for_path = collections.defaultdict(dict)
 
     def _outline(self, data, path):
         p = ''.join(path)
