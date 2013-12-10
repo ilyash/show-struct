@@ -5,6 +5,7 @@ import argparse
 import collections
 import json
 
+
 class Outliner(object):
 
     def __init__(self):
@@ -27,7 +28,7 @@ class Outliner(object):
             return
         # scalar assumed
         self.values_for_path[p][data] = True
-                
+
     def outline(self, data):
         self._outline(data, [])
         del self.paths['']
