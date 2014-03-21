@@ -4,7 +4,7 @@
 import argparse
 import collections
 import json
-
+import sys
 
 class Outliner(object):
 
@@ -44,11 +44,14 @@ class Outliner(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Show structure of give JSON file')
-    parser.add_argument('file', metavar='FILE')
+    parser.add_argument('file', metavar='FILE',help="The filename to read. Use '-' to read stdin")
     args = parser.parse_args()
 
-    with open(args.file) as f:
-        data = json.loads(f.read())
+    if args.file == "-":
+        data = json.loads(sys.stdin.read())
+    else:
+        with open(args.file) as f:
+            data = json.loads(f.read())
 
     outline = Outliner().outline(data)
     for path in outline:
