@@ -8,6 +8,7 @@ import collections
 import json
 import sys
 
+
 class Outliner(object):
 
     def __init__(self):
@@ -26,7 +27,9 @@ class Outliner(object):
         if isinstance(data, list):
             for v in data:
                 self._outline(v, path + ['[]'])
-            self.values_for_path[p]['(Array of {0} elements)'.format(len(data))] = True
+
+            sentence = '(Array of {0} elements)'.format(len(data))
+            self.values_for_path[p][sentence] = True
             return
         # scalar assumed
         self.values_for_path[p][data] = True
@@ -46,7 +49,8 @@ class Outliner(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Show structure of give JSON file')
-    parser.add_argument('file', metavar='FILE',help="The filename to read. Use '-' to read stdin - defaults to '-'",default="-",nargs="?")
+    parser.add_argument('file', metavar='FILE', default='-', nargs='?',
+                        help="The filename to read. Use '-' to read stdin - defaults to '-'")
     args = parser.parse_args()
 
     if args.file == "-":
@@ -64,4 +68,9 @@ if __name__ == '__main__':
         if l == 1:
             print("{0} -- {1}".format(path['path'], path['values'][0]))
             continue
-        print("{0} -- {1} .. {2} ({3} unique values)".format(path['path'], path['values'][0], path['values'][-1], l))
+        print("{0} -- {1} .. {2} ({3} unique values)".format(
+            path['path'],
+            path['values'][0],
+            path['values'][-1],
+            l,
+        ))
