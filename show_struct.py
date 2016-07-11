@@ -2,7 +2,7 @@
 # vim: ts=4 sw=4 et
 
 # https://github.com/ilyash/show-struct.git
-
+from __future__ import unicode_literals
 import argparse
 import collections
 import json
