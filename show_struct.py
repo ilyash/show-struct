@@ -22,7 +22,13 @@ class Outliner(object):
             if not data:
                 self.values_for_path[p]['(Empty hash)'] = True
             for k, v in data.iteritems():
-                self._outline(v, path + ['.' + k])
+                if "." in k:
+                    newpath = '["' + k + '"]'
+                    if len(path) == 0:
+                        newpath = '.' + newpath
+                else:
+                    newpath = '.' + k
+                self._outline(v, path + [newpath])
             return
         if isinstance(data, list):
             for v in data:
