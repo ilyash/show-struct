@@ -40,10 +40,15 @@ class Outliner(object):
 
         ret = []
         for path in sorted(self.paths):
-            ret.append({
-                'path': path,
-                'values': sorted(self.values_for_path[path].keys())
-            })
+            try:
+                ret.append({
+                    'path': path,
+                    'values': sorted(self.values_for_path[path].keys(), key=str)
+                })
+
+            except Exception as e:
+                import ipdb; ipdb.set_trace()
+                pass
         return ret
 
 
