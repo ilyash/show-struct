@@ -42,7 +42,7 @@ class Outliner(object):
         for path in sorted(self.paths):
             ret.append({
                 'path': path,
-                'values': sorted(self.values_for_path[path].keys())
+                'values': sorted(self.values_for_path[path].keys(), key=lambda x: x is not None)
             })
         return ret
 
